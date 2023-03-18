@@ -335,9 +335,23 @@
 <button type="reset" id="resetBtn">Reset</button>
 
 <br></br>
-<br></br>
 
 </form>
+
+<br></br>
+
+<div id="error" class="modal">
+
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <b>ERROR! The form did not submit. Please use the QR Code instead.</b>
+    <br></br>
+    <img src="" class="qr-code" />
+  </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 <script>
  
@@ -393,12 +407,29 @@
     e.preventDefault()
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
       .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
+      .catch(error => {console.error('Error!', error.message); errorAlert()})
       .then(saveFile())
       .then(resetCounters())
       .then(document.getElementById('scoutForm').reset())
 
   })
+
+  function errorAlert() {
+    var modal = document.getElementById("error");
+    var span = document.getElementsByClassName("close")[0];
+
+    modal.style.display = "block";
+
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  }
 
 
 
@@ -439,8 +470,18 @@
      
 
   
+     // This generates the QR code.
+     let qrData = "https://chart.googleapis.com/chart?cht=qr&chl=" + yourTeam + "  " + initials + "  " + teamNum + " " + matchNum + "  " + robotPosition + "  " + noShow + " " + exitCommunity + " " + preload + " " +
+         autoTopsCone + " " + autoTopsCube + "  " + autoMidsCone + " " + autoMidsCube + "  " + autoLowsCone + " " + autoLowsCube + "  " + autoEnd + "  " +
+         teleTopsCone + " " + teleTopsCube + "  " + teleMidsCone + " " + teleMidsCube + "  " + teleLowsCone + " " + teleLowsCube + "  " +
+         climb + "  " + robotDisabled + "  " + comments + "&chs=160x160&chld=L|0";
+      
+         $('.qr-code').attr('src', qrData);
+      
+
+
      // This variable stores all the data.
-     let data = yourTeam + "," + initials + "," + teamNum + "," + matchNum + "," + robotPosition + "," + noShow + "," + exitCommunity + "," + preload + "," +
+     let data = yourTeam + "+" + initials + "," + teamNum + "," + matchNum + "," + robotPosition + "," + noShow + "," + exitCommunity + "," + preload + "," +
          autoTopsCone + "," + autoTopsCube + "," + autoMidsCone + "," + autoMidsCube + "," + autoLowsCone + "," + autoLowsCube + "," + autoEnd + "," +
          teleTopsCone + "," + teleTopsCube + "," + teleMidsCone + "," + teleMidsCube + "," + teleLowsCone + "," + teleLowsCube + "," +
          climb + "," + robotDisabled + "," + comments;
