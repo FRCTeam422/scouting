@@ -40,7 +40,7 @@
   <body style="font-size:5vw;">
     <header class="p-4 mb-10 bg-orange-500">
       <div class="center">
-        <div style="background-color: orange;color:white;text-align:center; padding: 1em;">Snake Scout: FRC Team 401 Copperhead Robotics</div>
+        <div class="titleBox">Scouting Form: FRC Team 422 & FRC Team 6377</div>
       </div>
     </header>
     <main>
@@ -50,10 +50,10 @@
     
       <div id="preDiv">
         <h2>Prematch</h2>
-        <label for="yourTeam">What Team Are You On? (401 or 422):</label><br>
+        <label for="yourTeam">What Team Are You On? (422 or 6377):</label><br>
         <select name="Scouter's Team" id="yourTeam">
-          <option value="401" selected>401</option>
-          <option value="422">422</option>
+          <option value="422" selected>422</option>
+          <option value="6377">6377</option>
         </select><br><br>
       
         <label for="initials" required>Scouter Initials:</label>
@@ -66,98 +66,85 @@
         <label for="teamNum">Team Number:</label><br>
         <select name="Team Num" id="teamNum" onclick=generate_dropdown_items();>
           <option value="0000" selected>Select Team</option>
+          <option value="16">16</option>
+          <option value="28">28</option>
+          <option value="51">51</option>
+          <option value="85">85</option>
+          <option value="88">88</option>
+          <option value="166">166</option>
+          <option value="217">217</option>
+          <option value="281">281</option>
+          <option value="359">359</option>
+          <option value="422">422</option>
+          <option value="484">484</option>
+          <option value="533">533</option>
+          <option value="668">668</option>
+          <option value="971">971</option>
+          <option value="973">973</option>
+          <option value="1025">1025</option>
+          <option value="1296">1296</option>
+          <option value="1339">1339</option>
+          <option value="1391">1391</option>
+          <option value="1425">1425</option>
+          <option value="1540">1540</option>
+          <option value="1625">1625</option>
+          <option value="1676">1676</option>
+          <option value="1684">1684</option>
+          <option value="1714">1714</option>
+          <option value="1718">1718</option>
+          <option value="1730">1730</option>
+          <option value="1732">1732</option>
+          <option value="1785">1785</option>
+          <option value="1802">1802</option>
+          <option value="2059">2059</option>
+          <option value="2067">2067</option>
+          <option value="2075">2075</option>
+          <option value="2080">2080</option>
+          <option value="2170">2170</option>
+          <option value="2359">2359</option>
+          <option value="2429">2429</option>
+          <option value="2521">2521</option>
+          <option value="2832">2832</option>
+          <option value="3175">3175</option>
+          <option value="3339">3339</option>
+          <option value="3506">3506</option>
+          <option value="3653">3653</option>
+          <option value="3753">3753</option>
+          <option value="3794">3794</option>
+          <option value="4011">4011</option>
+          <option value="4276">4276</option>
+          <option value="4293">4293</option>
+          <option value="4342">4342</option>
+          <option value="4499">4499</option>
+          <option value="4607">4607</option>
+          <option value="4624">4624</option>
+          <option value="4635">4635</option>
+          <option value="4776">4776</option>
+          <option value="4920">4920</option>
+          <option value="4976">4976</option>
+          <option value="5050">5050</option>
+          <option value="5431">5431</option>
+          <option value="5434">5434</option>
+          <option value="5654">5654</option>
+          <option value="5883">5883</option>
+          <option value="6045">6045</option>
+          <option value="6146">6146</option>
+          <option value="6377">6377</option>
+          <option value="6833">6833</option>
+          <option value="6919">6919</option>
+          <option value="7157">7157</option>
+          <option value="7460">7460</option>
+          <option value="7558">7558</option>
+          <option value="7748">7748</option>
+          <option value="8871">8871</option>
+          <option value="9037">9037</option>
+          <option value="9068">9068</option>
+          <option value="9092">9092</option>
+          <option value="9152">9152</option>
+          <option value="9176">9176</option>
+          <option value="9213">9213</option>
+          <option value="9312">9312</option>
         </select>
-        <script>
-
-          var elmts = ['59',
-'67',
-'103',
-'157',
-'461',
-'599',
-'702',
-'836',
-'948',
-'968',
-'1114',
-'1165',
-'1318',
-'1591',
-'1622',
-'1678',
-'1690',
-'1701',
-'1708',
-'1902',
-'2194',
-'2337',
-'2383',
-'2551',
-'2614',
-'2630',
-'2714',
-'2771',
-'2830',
-'2834',
-'2881',
-'2910',
-'3005',
-'3042',
-'3229',
-'3467',
-'3476',
-'3534',
-'3536',
-'3539',
-'3603',
-'3996',
-'4009',
-'4381',
-'4415',
-'4422',
-'4451',
-'4481',
-'4571',
-'4786',
-'5010',
-'5166',
-'5199',
-'5427',
-'5557',
-'5586',
-'5801',
-'5985',
-'5987',
-'6702',
-'6722',
-'6800',
-'7197',
-'7258',
-'7451',
-'7461',
-'7657',
-'8013',
-'8033',
-'9031',
-'9072',
-'9097',
-'9105',
-'9120',
-'9128',
-'9138'];
-          var select = document.getElementById("teamNum");
-
-          function generate_dropdown_items() {
-              for (var i = 0; i < elmts.length; i++) {
-                var optn = elmts[i];
-                var el = document.createElement("option");
-                el.textContent = optn;
-                el.value = optn;
-                select.appendChild(el);
-              }
-            }
-        </script>
-
         <br>
         <br>
       

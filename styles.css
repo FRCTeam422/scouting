@@ -81,14 +81,20 @@ input.button {
 
 h1,
 h4 {
-	color: rgb(236, 127, 26);
+	color: rgb(155, 36, 164);
 }
 
 body {
-	background-color: #861f41ff;
+	background-color: #00b259;
 	color: black;
 	/*font-family: 'Akshar', sans-serif;*/
 	padding: 1vw;
+}
+.titleBox {
+	background-color: #73c167;
+	color: black;
+	text-align: center;
+	padding: 1em;
 }
 
 #preDiv,
