@@ -205,6 +205,15 @@
             <td><input type="button" class="buttonCube" id="alsPlusBtnCube" value="+"></td>
           </tr>
         </table>
+
+        <label for="PDA">Pieces Dropped:</label><br>
+        <table>
+          <tr>
+            <td><input type="button" class="buttonCube" id="apdSubBtnCube" value="-"></td>
+            <td><input name="Auto Drops" value='0' id="autoDrops" hidden><p id="autoDrop" name="Drops">0</p></td>
+            <td><input type="button" class="buttonCube" id="apdPlusBtnCube" value="+"></td>
+          </tr>
+        </table>
       
         <label for="climb">End of Auto Charge Station:</label><br>
         <select name="End of Auto" id="autoEnd">
@@ -251,6 +260,26 @@
             <td><input type="button" class="buttonCube" id="tlsPlusBtnCube" value="+"></td>
           </tr>
         </table>
+
+        <label for="TSD">Double Scored:</label>
+        <br>
+        <table>
+          <tr>
+            <td><input type="button" class="buttonCube" id="tdsSubBtnCube" value="-"></td>
+            <td><input name="Teleop Double Cubes Scored" value='0' id="teleDoublesCube" hidden><p id="teleDoubleCube" name="Double Scored Cube">0</p></td>
+            <td><input type="button" class="buttonCube" id="tdsPlusBtnCube" value="+"></td>
+          </tr>
+        </table>
+
+        <!-- <label for="TSD">Pieces Dropped:</label>
+        <br>
+        <table>
+          <tr>
+            <td><input type="button" class="buttonCube" id="tpdSubBtnCube" value="-"></td>
+            <td><input name="Teleop Drops" value='0' id="teleDrops" hidden><p id="teleDrop" name="Piece Drops">0</p></td>
+            <td><input type="button" class="buttonCube" id="tpdPlusBtnCube" value="+"></td>
+          </tr>
+        </table> -->
         
         <h2>Endgame</h2>
       
@@ -334,7 +363,12 @@
     var autoLowPlusButtonCube = document.getElementById("alsPlusBtnCube"),
         autoLowSubButtonCube = document.getElementById("alsSubBtnCube"),
         autoLowDisplayCube = document.getElementById("autoLowCube"),
-        autoLowValueCube = document.getElementById("autoLowsCube"); 
+        autoLowValueCube = document.getElementById("autoLowsCube");
+      
+    var autoDropPlusButtonCube = document.getElementById("apdPlusBtnCube"),
+        autoDropSubButtonCube = document.getElementById("apdSubBtnCube"),
+        autoDropDisplayCube = document.getElementById("autoDrop"),
+        autoDropValueCube = document.getElementById("autoDrops");
 
     var teleTopPlusButtonCube = document.getElementById("ttsPlusBtnCube"),
         teleTopSubButtonCube = document.getElementById("ttsSubBtnCube"),
@@ -350,7 +384,18 @@
         teleLowSubButtonCube = document.getElementById("tlsSubBtnCube"),
         teleLowDisplayCube = document.getElementById("teleLowCube"),
         teleLowValueCube = document.getElementById("teleLowsCube")
-        noShow = document.getElementById("noShow");
+
+    var teleDoublePlusButtonCube = document.getElementById("tdsPlusBtnCube"),
+        teleDoubleSubButtonCube = document.getElementById("tdsSubBtnCube"),
+        teleDoubleDisplayCube = document.getElementById("teleDoubleCube"),
+        teleDoubleValueCube = document.getElementById("teleDoublesCube")
+
+    // var teleDropPlusButtonCube = document.getElementById("tpdPlusBtnCube"),
+    //     teleDropSubButtonCube = document.getElementById("tpdSubBtnCube"),
+    //     teleDropDisplayCube = document.getElementById("teleDrop"),
+    //     teleDropValueCube = document.getElementById("teleDrops")
+
+    var noShow = document.getElementById("noShow");
 
     var teamNum = document.getElementById("teamNum").value,
         yourTeam = document.getElementById("yourTeam").value,
@@ -371,6 +416,9 @@
     autoLowPlusButtonCube.addEventListener('click', function(){addCount(autoLowDisplayCube, autoLowValueCube);});
     autoLowSubButtonCube.addEventListener('click', function(){subCount(autoLowDisplayCube, autoLowValueCube);});
 
+    autoDropPlusButtonCube.addEventListener('click', function(){addCount(autoDropDisplayCube, autoDropValueCube);});
+    autoDropSubButtonCube.addEventListener('click', function(){subCount(autoDropDisplayCube, autoDropValueCube);});
+
     teleTopPlusButtonCube.addEventListener('click', function(){addCount(teleTopDisplayCube, teleTopValueCube);});
     teleTopSubButtonCube.addEventListener('click', function(){subCount(teleTopDisplayCube, teleTopValueCube);});
 
@@ -379,6 +427,12 @@
 
     teleLowPlusButtonCube.addEventListener('click', function(){addCount(teleLowDisplayCube, teleLowValueCube);});
     teleLowSubButtonCube.addEventListener('click', function(){subCount(teleLowDisplayCube, teleLowValueCube);});
+
+    teleDoublePlusButtonCube.addEventListener('click', function(){addCount(teleDoubleDisplayCube, teleDoubleValueCube);});
+    teleDoubleSubButtonCube.addEventListener('click', function(){subCount(teleDoubleDisplayCube, teleDoubleValueCube);});
+
+    // teleDropPlusButtonCube.addEventListener('click', function(){addCount(teleDropDisplayCube, teleDropValueCube);});
+    // teleDropSubButtonCube.addEventListener('click', function(){subCount(teleDropDisplayCube, teleDropValueCube);});
         
     function addCount(data_display, data_value_storage){
         count = Number(data_value_storage.value);
@@ -412,6 +466,9 @@
       autoLowDisplayCube.innerHTML = 0;
       autoLowValueCube.value = 0;
 
+      autoDropDisplayCube.innerHTML = 0;
+      autoDropValueCube.value = 0;
+
       teleTopDisplayCube.innerHTML = 0;
       teleTopValueCube.value = 0;
 
@@ -420,6 +477,12 @@
 
       teleLowDisplayCube.innerHTML = 0;
       teleLowValueCube.value = 0;
+
+      teleDoubleDisplayCube.innerHTML = 0;
+      teleDoubleValueCube.value = 0;
+
+      // teleDropDisplayCube.innerHTML = 0;
+      // teleDropValueCube.value = 0;
 
       noShowValue = 'FALSE';
     }
@@ -447,6 +510,8 @@
       const autoMidsCube = document.getElementById("autoMidsCube").value;
 
       const autoLowsCube = document.getElementById("autoLowsCube").value;
+
+      const autoDrops = document.getElementById("autoDrops").value;
       
       const autoEnd = document.getElementById("autoEnd").value;
 
@@ -455,6 +520,10 @@
       const teleMidsCube = document.getElementById("teleMidsCube").value;
 
       const teleLowsCube = document.getElementById("teleLowsCube").value;
+
+      const teleDoublesCube = document.getElementById("teleDoublesCube").value;
+
+      // const teleDrops = document.getElementById("teleDrops").value;
       
       const climb = document.getElementById("climb").value;
 
@@ -471,19 +540,18 @@
       var wasDefendedValue = wasDefended.checked ? 'TRUE' : 'FALSE';
       var robotDisabledValue = robotDisabled.checked ? 'TRUE' : 'FALSE';
 
-
-      //why
-
-
       setTimeout(() => {
         generateQRCode(yourTeam, initials, teamNum, matchNum, robotPosition, noShowValue, exitCommunityValue,
                        autoTopsCube, 
                        autoMidsCube,
                        autoLowsCube,
+                       autoDrops,
                        autoEnd,
                        teleTopsCube,
                        teleMidsCube,
                        teleLowsCube,
+                       teleDoublesCube,
+                      //  teleDrops,
                        wasDefendedValue,
                        climb, robotDisabledValue, comments);
 
@@ -508,17 +576,20 @@
                             autoTopsCube,
                             autoMidsCube,
                             autoLowsCube,
+                            autoDrops,
                             autoEnd,
                             teleTopsCube,
                             teleMidsCube,
                             teleLowsCube, 
+                            teleDoublesCube,
+                            // teleDrops,
                             wasDefendedValue,
                             climb, robotDisabledValue, comments) => {
 
       const qrcode = new QRCode('qrcode', {
         text: 'qm'.concat(sep, yourTeam , sep , initials , sep, teamNum, sep, matchNum , sep , robotPosition , sep , noShowValue,
-          sep, exitCommunityValue, sep + autoTopsCube, sep + autoMidsCube, sep + autoLowsCube, sep + autoEnd, sep + teleTopsCube, 
-          sep + teleMidsCube, sep + teleLowsCube, sep + wasDefendedValue, sep + climb , sep , robotDisabledValue , sep , comments),
+          sep, exitCommunityValue, sep + autoTopsCube, sep + autoMidsCube, sep + autoLowsCube, sep + autoDrops, sep + autoEnd, sep + teleTopsCube, 
+          sep + teleMidsCube, sep + teleLowsCube, sep + teleDoublesCube, /** sep + teleDrops,*/ sep + wasDefendedValue, sep + climb , sep , robotDisabledValue , sep , comments),
         width: 300,
         height: 300,
       });
