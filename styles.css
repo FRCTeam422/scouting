@@ -64,13 +64,13 @@ input.button {
 }
 
 .buttonCube {
-	height: 60px;
-	width: 60px;
+	height: 80px;
+	width: 80px;
 	font-size: 5vm;
 	touch-action: manipulation;
 	border-radius: 50%;
-	background-color: rgb(107, 66, 201);
-	border-color: rgb(107, 66, 201);
+	background-color: #00B259;
+	border-color: #00B259;
 	margin: 10px;
 }
 
