@@ -552,14 +552,12 @@
                             teleMidsCube,
                             teleLowsCube, 
                             teleDoublesCube,
-                            // teleDrops,
-                            wasDefendedValue,
-                            climb, robotDisabledValue, comments) => {
+                            climb, comments) => {
 
       const qrcode = new QRCode('qrcode', {
         text: 'qm'.concat(sep, yourTeam , sep , initials , sep, teamNum, sep, matchNum , sep , robotPosition , sep , noShowValue,
           sep, exitCommunityValue, sep + autoTopsCube, sep + autoMidsCube, sep + autoLowsCube, sep + autoDrops, sep + autoEnd, sep + teleTopsCube, 
-          sep + teleMidsCube, sep + teleLowsCube, sep + teleDoublesCube, /** sep + teleDrops,*/ sep + wasDefendedValue, sep + climb , sep , robotDisabledValue , sep , comments),
+          sep + teleMidsCube, sep + teleLowsCube, sep + teleDoublesCube, sep + climb, sep , comments),
         width: 300,
         height: 300,
       });
